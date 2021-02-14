@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser,BaseUserManager, Permissions
 
 from django.utils import timezone
 
+
+from company.models import Company
+
 # Create your models here.
 class CustomUserManager(BaseUserManager):
     """ 
@@ -42,7 +45,7 @@ class NewUser(AbstractUser):
 
     
     id_user       = models.CharField('id usuario', max_length=10,unique=True, null=False)
-    ocuppied_by   = models.CharField(null=False, max_length=18, blank=False)
+    ocuppied_by  = models.ForeignKey(Company, blank=True, null=True,on_delete=models.DO_NOTHING, related_name='cliente_empresa')
     
     creation_date = models.DateTimeField('Fecha de Creacion', editable=False, null=True)
     modified      = models.DateTimeField('Modificado', null=True)
