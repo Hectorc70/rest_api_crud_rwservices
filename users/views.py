@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from rest_framework.permissions import IsAdminUser
 from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from .models import NewUser
 from .serializers import UserSerializer
@@ -15,7 +16,7 @@ class UserRecordView(APIView):
     users. GET request returns the registered users whereas
     a POST request allows to create a new user.
     """
-    permission_classes = [IsAdminUser]
+    #permission_classes = [IsAdminUser]
 
     def get(self, format=None):
         users = NewUser.objects.all()

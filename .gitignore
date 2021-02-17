@@ -2,3 +2,5 @@
 *.pyc
 
 rest_api_crud_rwservices/__pycache__/
+
+.vscode/

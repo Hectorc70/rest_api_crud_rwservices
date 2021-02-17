@@ -5,6 +5,7 @@ from rest_framework import serializers
 from users.models import NewUser
 
 
+
 class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validate_data):
@@ -13,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
     class Meta:
         model = NewUser
-        fields = ('id_user', 'password')
+        fields = ('id_user', 'password', 'occupied_by')
 
         validators = [
             UniqueTogetherValidator(

@@ -25,8 +25,8 @@ SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['192.168.0.194']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.194']
+#ALLOWED_HOSTS = []
 
 
 # Application definition
