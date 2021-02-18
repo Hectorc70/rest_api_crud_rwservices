@@ -10,10 +10,15 @@ from company.models import Company
 
 # Create your models here.
 class Rol(models.Model):
-    __name__ = 'Roles'
+
     id_rol     = models.AutoField('id rol', primary_key=True)
     name_rol  = models.CharField('Nombre de Rol', max_length=20, blank=False, null=False)
-
+    #type_obj      = models.CharField('Tipo de Objeto', max_length=1, default='R', editable=False)
+    
+    class Meta:
+        verbose_name = 'Rol'
+        verbose_name_plural = 'Roles'
+    
     def __str__(self):
         return self.name_rol
 
@@ -57,20 +62,28 @@ class NewUser(AbstractUser):
 
     
     id_user       = models.CharField('id usuario', max_length=10,unique=True, null=False)
-    occupied_by  = models.ForeignKey(Company, blank=True, null=True,on_delete=models.DO_NOTHING, related_name='cliente_empresa')
+    occupied_by  = models.ForeignKey(Company, verbose_name='Ocupado por la Empresa',
+                                    blank=True, null=True, on_delete=models.DO_NOTHING,
+                                    related_name='cliente_empresa'
+                                    )
     
-    creation_date = models.DateTimeField('Fecha de Creacion', editable=False, null=True)
+    creation_date = models.DateTimeField('Fecha de Creacion',null=True)
     modified      = models.DateTimeField('Modificado', null=True)
     created_by    = models.CharField('Creado Por', max_length=10, null=True)
     is_staff      = models.BooleanField(default=False)
     is_active     = models.BooleanField(default=True)
-    rol           = models.ForeignKey(Rol, blank=False, null=True, on_delete=models.CASCADE, related_name="rol_id")
+    #type_obj      = models.CharField('Tipo de Objeto', max_length=1,default='U', editable=False)
+    rol           = models.ForeignKey(Rol, blank=False, null=True, 
+                                        on_delete=models.CASCADE, related_name="rol")
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'id_user'
 
     # requerido para superuser
     REQUIRED_FIELDS = [id_user]
+
+    class Meta:
+        verbose_name = 'Usuario'
 
     def save(self, *args, **kwargs):
         if not self.id_user:

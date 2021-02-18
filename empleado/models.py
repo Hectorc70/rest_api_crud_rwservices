@@ -6,11 +6,11 @@ from users.models import NewUser
 # Create your models here.
 
 
-class Empleado(models.Model):
+class Employee(models.Model):
     rfc = models.CharField('RFC', max_length=13, primary_key=True,
                             blank=False, unique=True
                             )
-    name = models.CharField('Nombre de Empresa', blank=False,
+    name = models.CharField('Nombre de Empleado', blank=False,
                                     max_length=100
                                     )
     second_name = models.CharField('Segundo nombre', blank=True, null=True,
@@ -38,6 +38,11 @@ class Empleado(models.Model):
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
 
     user            = models.ForeignKey(NewUser, blank=True, null=True, on_delete=models.CASCADE, related_name='user')
+
+
+    class Meta:
+        verbose_name = 'Empleado'
+
     def __str__(self):
         return self.name
 

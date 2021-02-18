@@ -4,7 +4,8 @@ from django.utils import timezone
 
 
 class Company(models.Model):
-    __name__ = 'Company'
+    
+    
     rfc = models.CharField('RFC', max_length=13, primary_key=True,
                             blank=False, unique=True
                             )
@@ -25,6 +26,9 @@ class Company(models.Model):
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
     path_logo       = models.CharField('Ruta Logo Imagen', max_length=500, null=True)   
 
+    class Meta:
+        verbose_name = 'Empresa'
+
     def __str__(self):
         return self.name_company
 
@@ -40,10 +44,11 @@ class Area(models.Model):
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
     path_img_header = models.CharField('Ruta de Imagen de Header', max_length=300, null=True)
 
-    Company         = models.ForeignKey(Company, null=False, on_delete=models.CASCADE, related_name='company')
+    company         = models.ForeignKey(Company, null=False, on_delete=models.CASCADE, related_name='company')
 
 
-
+    class Meta:
+        verbose_name = 'Area'
 
     def __str__(self):
         return self.name_area
@@ -51,6 +56,7 @@ class Area(models.Model):
 
 
 class Activity(models.Model):
+
 
     id_activity     = models.AutoField(primary_key=True, unique=True)
     name_activity   = models.CharField('Nombre de Actividad', max_length=300)
@@ -66,7 +72,9 @@ class Activity(models.Model):
     area         = models.ForeignKey(Area, null=False, on_delete=models.CASCADE, related_name='Area')
     
 
-
+    class Meta:
+        verbose_name = 'Actividad'
+        verbose_name_plural = 'Actividades'
 
     def __str__(self):
         return self.name_activity
