@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+
+
+from users.models import NewUser
 # Create your models here.
 
 
@@ -34,7 +37,7 @@ class Empleado(models.Model):
     created_by      = models.CharField('Creado Por', max_length=10, null=True)
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
 
-
+    user            = models.ForeignKey(NewUser, blank=True, null=True, on_delete=models.CASCADE, related_name='user')
     def __str__(self):
         return self.name
 

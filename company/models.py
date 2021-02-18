@@ -27,3 +27,48 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name_company
+
+
+
+class Area(models.Model):
+
+    id_area         = models.AutoField(primary_key=True, unique=True)
+    name_area       = models.CharField('Nombre de Area', max_length=300)
+    creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
+    modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
+    created_by      = models.CharField('Creado Por', max_length=10, null=True)
+    modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
+    path_img_header = models.CharField('Ruta de Imagen de Header', max_length=300, null=True)
+
+    Company         = models.ForeignKey(Company, null=False, on_delete=models.CASCADE, related_name='company')
+
+
+
+
+    def __str__(self):
+        return self.name_area
+
+
+
+class Activity(models.Model):
+
+    id_activity     = models.AutoField(primary_key=True, unique=True)
+    name_activity   = models.CharField('Nombre de Actividad', max_length=300)
+    status          = models.BooleanField('Estatus')    
+    observations    = models.TextField('Observaciones de Actividad')
+    path_img_header = models.CharField('Ruta de Imagen de Header', max_length=300, null=True)
+    
+    creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
+    created_by      = models.CharField('Creado Por', max_length=10, null=True)
+    modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
+    modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
+
+    area         = models.ForeignKey(Area, null=False, on_delete=models.CASCADE, related_name='Area')
+    
+
+
+
+    def __str__(self):
+        return self.name_activity
+
+        
