@@ -101,13 +101,12 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'rw_servicios',
-            'USER': 'root',
-            'PASSWORD': '',
-            'HOST': 'localhost',
-            'PORT': '3306',
-            'TIME_ZONE': 'UTC',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'ddkfjpokeg7fl1',
+            'HOST': 'ec2-54-87-34-201.compute-1.amazonaws.com',
+            'PORT': 5432,
+            'USER': 'falhuuirqzqddf',
+            'PASSWORD': 'c9acf81ed34af2392daf128f01c1af4c32e13b7e78c51f45c56a8478b8a6d68d',        
         }
 }
 
