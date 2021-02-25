@@ -80,7 +80,7 @@ class NewUser(AbstractUser):
     USERNAME_FIELD = 'id_user'
 
     # requerido para superuser
-    REQUIRED_FIELDS = [id_user]
+    REQUIRED_FIELDS = []
 
     class Meta:
         verbose_name = 'Usuario'

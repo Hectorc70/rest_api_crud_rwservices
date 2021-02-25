@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-""" DATABASES = {
+DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'ddkfjpokeg7fl1',
@@ -108,10 +108,10 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
             'USER': 'falhuuirqzqddf',
             'PASSWORD': 'c9acf81ed34af2392daf128f01c1af4c32e13b7e78c51f45c56a8478b8a6d68d',        
         }
-} """
+}
 
 
-DATABASES = {
+""" DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'prueba_api',
@@ -120,7 +120,7 @@ DATABASES = {
             'USER': 'postgres',
             'PASSWORD': '12345',        
         }
-}
+} """
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
