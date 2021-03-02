@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
     class Meta:
         model = NewUser
-        fields = ('id_user', 'password', 'occupied_by')
+        fields = ('id_user', 'password', 'occupied_by', 'rol')
 
         validators = [
             UniqueTogetherValidator(
