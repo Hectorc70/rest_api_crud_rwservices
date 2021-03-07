@@ -3,5 +3,5 @@ from .views import UserRecordView
 
 app_name = 'users'
 urlpatterns = [
-    path('user/', UserRecordView.as_view(), name='users'),
+    path('user/<user_id>', UserRecordView.as_view(), name='users'),
 ]
