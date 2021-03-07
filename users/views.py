@@ -18,8 +18,8 @@ class UserRecordView(APIView):
     """
     #permission_classes = [IsAdminUser]
 
-    def get(self, format=None):
-        users = NewUser.objects.all()
+    def get(self, request, user_id):
+        users = NewUser.objects.filter(id_user=user_id)
         serializer = UserSerializer(users, many=True)
 
         return Response(serializer.data)
