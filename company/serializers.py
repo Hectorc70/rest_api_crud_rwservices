@@ -14,7 +14,7 @@ class CompanySerializer(serializers.ModelSerializer):
         return company
     class Meta:
         model = Company
-        fields = ('rfc', 'name_company', 'email', 'street')
+        fields = '__all__'
 
         validators = [
             UniqueTogetherValidator(
