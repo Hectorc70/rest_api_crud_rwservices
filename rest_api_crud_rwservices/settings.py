@@ -100,14 +100,13 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-BASES DE DATOS  = {
-    'predeterminado' : dj_database_url . config (
-        predeterminado = config ( 'DATABASE_URL' )
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
     )
 
     
-} 
-
+}
 
 """
 import configparser
