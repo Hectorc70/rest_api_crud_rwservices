@@ -1,8 +1,9 @@
 from django.contrib import admin
 
 
-from .models import Company, Area, Activity
+from .models import Company, Area, Activity, ImagenActividad
 # Register your models here.
 admin.site.register(Company)
 admin.site.register(Area)
 admin.site.register(Activity)
+admin.site.register(ImagenActividad)

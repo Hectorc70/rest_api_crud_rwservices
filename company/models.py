@@ -79,4 +79,27 @@ class Activity(models.Model):
     def __str__(self):
         return self.name_activity
 
-        
+    
+class ImagenActividad(models.Model):
+
+
+    id_img          = models.AutoField(primary_key=True, unique=True)
+    name_img        = models.CharField('Nombre de Imagen', max_length=300)
+    tipo            = models.CharField('tipo', max_length=300)
+    path_img        = models.CharField('Ruta de Imagen de Header', max_length=500, null=True)
+    
+    creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
+    created_by      = models.CharField('Creado Por', max_length=10, null=True)
+    modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
+    modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
+
+    Activity         = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='Activity')
+    
+
+    class Meta:
+        verbose_name = 'imagen Actividad'
+        verbose_name_plural = 'imagenes'
+
+    def __str__(self):
+        return self.name_activity
+

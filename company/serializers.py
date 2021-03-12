@@ -34,3 +34,14 @@ class AreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Area
         fields = '__all__'
+
+
+class ActivitySerializer(serializers.ModelSerializer):
+
+    def create(self, validate_data):
+        activity = Activity.objects.create(**validate_data)
+
+        return activity
+    class Meta:
+        model = Activity
+        fields = '__all__'
