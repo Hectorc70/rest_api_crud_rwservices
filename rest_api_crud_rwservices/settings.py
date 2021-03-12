@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
