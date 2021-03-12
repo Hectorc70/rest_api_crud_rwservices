@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
@@ -100,14 +100,13 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-BASES DE DATOS  = {
-    'predeterminado' : dj_database_url . config (
-        predeterminado = config ( 'DATABASE_URL' )
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
     )
 
     
-} 
-
+}
 
 """
 import configparser
@@ -124,18 +123,6 @@ DATABASES = {
             'PORT': config['TEST']['DB_PORT'],
         }
 }  """
-
-
-""" DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'prueba_api',
-            'HOST': 'localhost',
-            'PORT': '5432',
-            'USER': 'postgres',
-            'PASSWORD': '12345',        
-        }
-} """
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
