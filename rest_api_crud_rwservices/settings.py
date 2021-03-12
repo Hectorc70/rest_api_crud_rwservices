@@ -17,6 +17,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -99,16 +100,30 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+""" BASES DE DATOS  = {
+    'predeterminado' : dj_database_url . config (
+        predeterminado = config ( 'DATABASE_URL' )
+    )
+
+    
+} """
+
+
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'ddkfjpokeg7fl1',
-            'HOST': 'ec2-54-87-34-201.compute-1.amazonaws.com',
-            'PORT': 5432,
-            'USER': 'falhuuirqzqddf',
-            'PASSWORD': 'c9acf81ed34af2392daf128f01c1af4c32e13b7e78c51f45c56a8478b8a6d68d',        
+        'default': {
+            'ENGINE':'django.db.backends.postgresql',
+            'NAME':config['TEST']['DB_NAME'],
+            'USER':config['TEST']['DB_USER'],
+            'PASSWORD': config['TEST']['DB_PASSWORD'],
+            'HOST': config['TEST']['DB_HOST'],
+            'PORT': config['TEST']['DB_PORT'],
         }
-}
+} 
 
 
 """ DATABASES = {
