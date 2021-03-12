@@ -86,7 +86,7 @@ class PictureActivity(models.Model):
 
     id_img          = models.AutoField(primary_key=True, unique=True)
     name_img        = models.CharField('Nombre de Imagen', max_length=100)
-    tipo_imagen     = models.CharField('tipo', max_length=100)
+    tipo_img     = models.CharField('tipo', max_length=100)
     path_img        = models.CharField('Ruta de Imagen', max_length=500, null=True)
     
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
