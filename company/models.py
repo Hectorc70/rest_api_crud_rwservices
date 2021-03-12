@@ -80,20 +80,20 @@ class Activity(models.Model):
         return self.name_activity
 
     
-class ImagenActividad(models.Model):
+class PictureActivity(models.Model):
 
 
     id_img          = models.AutoField(primary_key=True, unique=True)
-    name_img        = models.CharField('Nombre de Imagen', max_length=300)
-    tipo            = models.CharField('tipo', max_length=300)
-    path_img        = models.CharField('Ruta de Imagen de Header', max_length=500, null=True)
+    name_img        = models.CharField('Nombre de Imagen', max_length=100)
+    tipo            = models.CharField('tipo', max_length=100)
+    path_img        = models.CharField('Ruta de Imagen', max_length=500, null=True)
     
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
     created_by      = models.CharField('Creado Por', max_length=10, null=True)
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
 
-    Activity         = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='Activity')
+    Activity         = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='activity_imagen')
     
 
     class Meta:
@@ -101,5 +101,37 @@ class ImagenActividad(models.Model):
         verbose_name_plural = 'imagenes'
 
     def __str__(self):
-        return self.name_activity
+        return self.name_img
 
+class PictureActivityObservations(models.Model):
+
+
+    id_img          = models.AutoField(primary_key=True, unique=True)
+    name_img        = models.CharField('Nombre de Imagen', max_length=100)
+    path_img        = models.CharField('Ruta de Imagen', max_length=500, null=True)
+    
+    creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
+    created_by      = models.CharField('Creado Por', max_length=10, null=True)
+    modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
+    modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
+
+    Activity         = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='observation_imagen')
+    
+
+    class Meta:
+        verbose_name = 'imagen Observacion'
+        verbose_name_plural = 'Imagenes Observaciones'
+
+    def __str__(self):
+        return self.name_img
+
+class Task(models.Model):
+    id_task       = models.AutoField(primary_key=True, unique=True)    
+    name_task  = models.CharField('N', max_length=100, null=True)
+    
+    creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
+    created_by      = models.CharField('Creado Por', max_length=10, null=True)
+    modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
+    modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
+
+    Activity     = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='activity_tarea')
