@@ -57,7 +57,7 @@ class PictureActSerializer(serializers.ModelSerializer):
         return activity_pictures
     class Meta:
         model = PictureActivity
-        fields = ['tipo_imagen', 'path_img']
+        fields = ['tipo_img', 'path_img']
 
 class TaskSerializer(serializers.ModelSerializer):
 
