@@ -46,17 +46,29 @@ class ActivitysAreaRecordView(APIView):
 class ActivityRecordView(APIView):
     def get(self, request, id_activity):
 
+        activity = Activity.objects.filter(id_activity=id_activity)
+        serializer_activity = ActivitySerializer(activity, many=True)       
+        return Response(serializer_activity.data)
 
-        activity = Activity.objects.filter(id_activity=id_activity)   
+
+class PictureRecordView(APIView):
+    def get(self, request, id_activity):        
+
         pictures = PictureActivity.objects.filter(activity=id_activity)   
-        tasks = Task.objects.filter(activity=id_activity)  
-
-
-
-        serializer_activity = ActivitySerializer(activity, many=True)
         serializer_pictures = PictureActSerializer(pictures, many=True)
-        serializer_tasks = TaskSerializer(tasks, many=True)
-        serializer = serializer_activity.data + serializer_pictures.data + serializer_tasks.data
-        print(serializer)
-        return Response(serializer)
+
+
+
+        return Response(serializer_pictures.data)
+
+
+
+class TaskRecordView(APIView):
+    def get(self, request, id_activity):        
+        serializer_tasks = Task.objects.filter(activity=id_activity)
+        serializer_tasks = TaskSerializer(serializer_tasks, many=True)
+        return Response(serializer_tasks.data)
+
+
+
 
