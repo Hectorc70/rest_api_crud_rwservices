@@ -1,4 +1,4 @@
-import  django_heroku
+
 
 
 
@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,10 +108,10 @@ DATABASES = {
     )
 
     
-}
+} 
 
-"""
-import configparser
+
+""" import configparser
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -123,7 +124,7 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
-}  """
+}   """
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -163,3 +164,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
