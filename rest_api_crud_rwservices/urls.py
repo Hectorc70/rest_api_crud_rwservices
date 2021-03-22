@@ -23,9 +23,10 @@ from rest_framework.authtoken import views
 
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('api/', include('users.urls', namespace='api')),
     path('api/', include('company.urls', namespace='companys')),
-        
+    
     path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
