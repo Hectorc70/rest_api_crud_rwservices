@@ -24,6 +24,8 @@ class CompanyRecordView(APIView):
 
         return Response(serializer.data)
 
+    
+
 class AreaRecordView(APIView):
     def get(self, request,company):
 
@@ -50,6 +52,17 @@ class ActivityRecordView(APIView):
         serializer_activity = ActivitySerializer(activity, many=True)       
         return Response(serializer_activity.data)
 
+    def post(self, request, format=None):
+        serializer = ActivitySerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data, 
+                            status= status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, 
+                            status= status.HTTP_400_BAD_REQUEST)
 
 class PictureRecordView(APIView):
     def get(self, request, id_activity):        

@@ -18,7 +18,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import dj_database_url
-from decouple import config
+#from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,10 +31,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -102,16 +102,16 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 
     
 }
+"""
 
-
-""" import configparser
+import configparser
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -124,7 +124,7 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
-} """
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
