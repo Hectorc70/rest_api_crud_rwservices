@@ -4,6 +4,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
+from rest_framework import status
+from django.http import Http404
 
 
 
@@ -24,6 +26,18 @@ class CompanyRecordView(APIView):
 
         return Response(serializer.data)
 
+    
+    def post(self, request, format=None):
+        serializer = CompanySerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data, 
+                            status= status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, 
+                            status= status.HTTP_400_BAD_REQUEST)
 class AreaRecordView(APIView):
     def get(self, request,company):
 
@@ -32,6 +46,17 @@ class AreaRecordView(APIView):
 
         return Response(serializer.data)
 
+    def post(self, request, format=None):
+        serializer = AreaSerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data, 
+                            status= status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, 
+                            status= status.HTTP_400_BAD_REQUEST)
 
 
 class ActivitysAreaRecordView(APIView):
@@ -50,6 +75,17 @@ class ActivityRecordView(APIView):
         serializer_activity = ActivitySerializer(activity, many=True)       
         return Response(serializer_activity.data)
 
+    def post(self, request, format=None):
+        serializer = ActivitySerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data, 
+                            status= status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, 
+                            status= status.HTTP_400_BAD_REQUEST)
 
 class PictureRecordView(APIView):
     def get(self, request, id_activity):        
@@ -61,7 +97,17 @@ class PictureRecordView(APIView):
 
         return Response(serializer_pictures.data)
 
+    def post(self, request, format=None):
+        serializer = PictureActSerializer(data=request.data)
 
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data, 
+                            status= status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, 
+                            status= status.HTTP_400_BAD_REQUEST)
 
 class TaskRecordView(APIView):
     def get(self, request, id_activity):        
@@ -71,4 +117,14 @@ class TaskRecordView(APIView):
 
 
 
+    def post(self, request, format=None):
+        serializer = TaskSerializer(data=request.data)
 
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data, 
+                            status= status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, 
+                            status= status.HTTP_400_BAD_REQUEST)

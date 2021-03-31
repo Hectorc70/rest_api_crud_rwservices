@@ -44,7 +44,6 @@ class Area(models.Model):
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
     created_by      = models.CharField('Creado Por', max_length=10, null=True)
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
-    path_img_header = models.CharField('Ruta de Imagen de Header', max_length=300, null=True)
 
     company         = models.ForeignKey(Company, null=False, on_delete=models.CASCADE, related_name='company')
 
@@ -66,11 +65,11 @@ class Activity(models.Model):
     observations    = models.TextField('Observaciones de Actividad', blank=True)
     
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
-    created_by      = models.CharField('Creado Por', max_length=10, null=True)
+    created_by      = models.CharField('Creado Por', max_length=10, null=False)
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
-    modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
+    modified_by     = models.CharField('Modificado Por', max_length=10, null=False)
 
-    area         = models.ForeignKey(Area, null=False, on_delete=models.CASCADE, related_name='Area')
+    area         = models.ForeignKey(Area, null=False, on_delete=models.CASCADE, related_name='area')
     
 
     class Meta:
