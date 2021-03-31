@@ -47,7 +47,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         return activity
     class Meta:
         model = Activity
-        fields = ['id_activity','name_activity','status', 'observations']
+        fields = '__all__'
 
 class PictureActSerializer(serializers.ModelSerializer):
 
