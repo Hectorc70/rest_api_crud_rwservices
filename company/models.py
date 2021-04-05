@@ -62,7 +62,7 @@ class Activity(models.Model):
     id_activity     = models.AutoField(primary_key=True, unique=True)
     name_activity   = models.CharField('Nombre de Actividad', max_length=300)
     status          = models.BooleanField('Estatus')    
-    observations    = models.TextField('Observaciones de Actividad', blank=True)
+    observations    = models.TextField('Observaciones de Actividad', blank=True, null=True)
     
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
     created_by      = models.CharField('Creado Por', max_length=10, null=False)
