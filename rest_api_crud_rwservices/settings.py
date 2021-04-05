@@ -31,9 +31,7 @@ config = configparser.ConfigParser()
 config.read('config.ini')
 
 #SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
-SECRET_KEY = dj_database_url.config(
-        default=config('SECRET_KEY')
-    )
+SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
