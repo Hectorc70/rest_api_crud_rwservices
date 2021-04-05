@@ -24,7 +24,7 @@ from rest_framework.authtoken import views
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     path('api/', include('users.urls', namespace='api')),
     path('api/', include('company.urls', namespace='companys')),
     
