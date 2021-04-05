@@ -1,4 +1,4 @@
-import  django_heroku
+
 
 
 
@@ -15,7 +15,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import django_heroku
 import os
 import dj_database_url
 from decouple import config
@@ -26,23 +26,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-import configparser
-config = configparser.ConfigParser()
-config.read('config.ini')
+
 
 #SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
-SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
+SECRET_KEY = dj_database_url.config(
+        default=config('SECRET_KEY')
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
-#ALLOWED_HOSTS = ['localhost']
+#ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -114,8 +115,11 @@ DATABASES = {
 } 
 
 
-
-""" DATABASES = {
+""" 
+import configparser
+config = configparser.ConfigParser()
+config.read('config.ini')
+DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
             'NAME':config['TEST']['DB_NAME'],
@@ -163,10 +167,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =(
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
