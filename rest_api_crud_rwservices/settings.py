@@ -30,10 +30,13 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
+#SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
+SECRET_KEY = dj_database_url.config(
+        default=config('SECRET_KEY')
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
