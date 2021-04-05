@@ -26,12 +26,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+import configparser
+config = configparser.ConfigParser()
+config.read('config.ini')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
+SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
@@ -112,11 +114,7 @@ DATABASES = {
 } 
 
 
-""" import configparser
-
-config = configparser.ConfigParser()
-config.read('config.ini')
-DATABASES = {
+""" DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
             'NAME':config['TEST']['DB_NAME'],
@@ -125,7 +123,7 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
-}   """
+} """
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

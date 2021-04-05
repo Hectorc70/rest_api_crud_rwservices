@@ -11,7 +11,7 @@ from company.models import Company
 # Create your models here.
 class Rol(models.Model):
 
-    id_rol     = models.AutoField('id rol', primary_key=True)
+    id_rol     = models.IntegerField('id rol', primary_key=True)
     name_rol  = models.CharField('Nombre de Rol', max_length=20, blank=False, null=False)
     #type_obj      = models.CharField('Tipo de Objeto', max_length=1, default='R', editable=False)
     
