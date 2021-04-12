@@ -15,6 +15,12 @@ urlpatterns = [
     path('api-activities-area/<area>', ActivitysAreaRecordView.as_view(), name='activities_area'),
     path('api-activity/<id_activity>', ActivityRecordView.as_view(), name='activity'),
     path('api-activity/', ActivityRecordView.as_view(), name='activity'),
+    
+    path('api-picture/', PictureRecordView.as_view(), name='picture'),
     path('api-pictures-activity/<id_activity>', PictureRecordView.as_view(), name='picture'),
+
+    
+    path('api-task/', TaskRecordView.as_view(), name='task'),
     path('api-tasks-activity/<id_activity>', TaskRecordView.as_view(), name='task'),
+    
 ] 

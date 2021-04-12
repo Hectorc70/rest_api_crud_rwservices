@@ -30,7 +30,9 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
+SECRET_KEY = dj_database_url.config(
+        default=config('SECRET_KEY')
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -113,14 +115,11 @@ DATABASES = {
     
 } 
 
-<<<<<<< HEAD
 
 """ import configparser
-=======
->>>>>>> tests
 
 
-""" DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
             'NAME':config['TEST']['DB_NAME'],
