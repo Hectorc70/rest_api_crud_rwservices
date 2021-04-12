@@ -30,7 +30,9 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
+SECRET_KEY = dj_database_url.config(
+        default=config('SECRET_KEY')
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -113,8 +115,14 @@ DATABASES = {
     
 } 
 
+<<<<<<< HEAD
+=======
 
-""" DATABASES = {
+""" import configparser
+
+>>>>>>> tests
+
+DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
             'NAME':config['TEST']['DB_NAME'],
@@ -123,7 +131,15 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
+<<<<<<< HEAD
 } """
+=======
+<<<<<<< HEAD
+}   """
+=======
+} """
+>>>>>>> tests
+>>>>>>> tests
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -162,7 +178,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> tests
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+<<<<<<< HEAD
+=======
+=======
+STATICFILES_DIRS =(
+    os.path.join(BASE_DIR, 'static'),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+>>>>>>> tests
+>>>>>>> tests
