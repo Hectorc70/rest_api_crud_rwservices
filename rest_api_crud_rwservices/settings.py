@@ -29,13 +29,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 #SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
 =======
+<<<<<<< HEAD
 >>>>>>> bc8fc0a2b4796fd5bd377b823553afc024086061
+=======
+>>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
+>>>>>>> tests
 SECRET_KEY = dj_database_url.config(
-        default=config('SECRET_KEY')
-    )
+=======
+""" import configparser
+config = configparser.ConfigParser()
+config.read('config.ini')
+SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY'] """
 
+""" SECRET_KEY = dj_database_url.config(
+>>>>>>> dev2
+        default=config('SECRET_KEY')
+    ) """
+
+
+SECRET_KEY  = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -118,19 +133,34 @@ DATABASES = {
 } 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 """ import configparser
 
 >>>>>>> tests
+=======
+>>>>>>> tests
 
 <<<<<<< HEAD
 """ 
 import configparser
+=======
+
+
+""" import configparser
+>>>>>>> dev2
 config = configparser.ConfigParser()
 config.read('config.ini')
 =======
+<<<<<<< HEAD
 >>>>>>> bc8fc0a2b4796fd5bd377b823553afc024086061
+=======
+""" import configparser
+
+
+>>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
+>>>>>>> tests
 DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
@@ -141,13 +171,22 @@ DATABASES = {
             'PORT': config['TEST']['DB_PORT'],
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 } """
 =======
+=======
+>>>>>>> tests
 <<<<<<< HEAD
 }   """
 =======
 } """
 >>>>>>> tests
+<<<<<<< HEAD
+>>>>>>> tests
+=======
+=======
+} """
+>>>>>>> dev2
 >>>>>>> tests
 
 # Password validation
@@ -188,6 +227,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> tests
+=======
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+<<<<<<< HEAD
+)
 =======
 <<<<<<< HEAD
 >>>>>>> tests
@@ -196,7 +245,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> tests
 =======
 STATICFILES_DIRS =(
     os.path.join(BASE_DIR, 'static'),
@@ -206,4 +258,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 >>>>>>> tests
+<<<<<<< HEAD
+>>>>>>> tests
+=======
+>>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
+=======
+)
+>>>>>>> dev2
 >>>>>>> tests
