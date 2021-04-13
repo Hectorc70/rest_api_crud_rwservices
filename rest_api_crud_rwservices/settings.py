@@ -29,15 +29,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 #SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY']
 =======
 >>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
 SECRET_KEY = dj_database_url.config(
-        default=config('SECRET_KEY')
-    )
+=======
+""" import configparser
+config = configparser.ConfigParser()
+config.read('config.ini')
+SECRET_KEY = config['KEY_PRODUCTION']['SECRET_KEY'] """
 
+""" SECRET_KEY = dj_database_url.config(
+>>>>>>> dev2
+        default=config('SECRET_KEY')
+    ) """
+
+
+SECRET_KEY  = 'spbrt_os$vg-h7!(7g9e6nf_4_2y94xv78z-a)o4pi62wra7su'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
@@ -117,10 +128,16 @@ DATABASES = {
     
 } 
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 """ 
 import configparser
+=======
+
+
+""" import configparser
+>>>>>>> dev2
 config = configparser.ConfigParser()
 config.read('config.ini')
 =======
@@ -138,10 +155,14 @@ DATABASES = {
             'PORT': config['TEST']['DB_PORT'],
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }   """
 =======
 } """
 >>>>>>> tests
+=======
+} """
+>>>>>>> dev2
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -184,6 +205,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+<<<<<<< HEAD
 )
 =======
 <<<<<<< HEAD
@@ -201,3 +223,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 >>>>>>> tests
 >>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
+=======
+)
+>>>>>>> dev2

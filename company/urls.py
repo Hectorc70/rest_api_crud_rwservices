@@ -20,9 +20,10 @@ urlpatterns = [
     
 <<<<<<< HEAD
     path('api-pictures-activity/<id_activity>', PictureRecordView.as_view(), name='picture'),
-    path('api-pictures-activity', PictureRecordView.as_view(), name='picture'),
+    path('api-picture/', PictureRecordView.as_view(), name='picture'),
     
     path('api-tasks-activity/<id_activity>', TaskRecordView.as_view(), name='task'),
+<<<<<<< HEAD
     path('api-tasks-activity/', TaskRecordView.as_view(), name='task'),
 =======
     path('api-picture/', PictureRecordView.as_view(), name='picture'),
@@ -33,4 +34,7 @@ urlpatterns = [
     path('api-tasks-activity/<id_activity>', TaskRecordView.as_view(), name='task'),
     
 >>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
+=======
+    path('api-task/', TaskRecordView.as_view(), name='task'),
+>>>>>>> dev2
 ] 

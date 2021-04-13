@@ -25,10 +25,14 @@ from rest_framework.authtoken import views
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('', admin.site.urls),
 =======
     path('admin/', admin.site.urls),
 >>>>>>> 45654672e11ccfe2e46041abed227dfd187fe1ed
+=======
+    path('', admin.site.urls),
+>>>>>>> dev2
     path('api/', include('users.urls', namespace='api')),
     path('api/', include('company.urls', namespace='companys')),
     
