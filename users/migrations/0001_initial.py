@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('company', '0002_auto_20210213_1803'),
-        ('auth', '0012_alter_user_first_name_max_length'),
+        #('auth', '0012_alter_user_first_name_max_length'),
     ]
 
     operations = [
