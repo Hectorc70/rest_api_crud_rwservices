@@ -19,8 +19,8 @@ urlpatterns = [
     path('api-activity/', ActivityRecordView.as_view(), name='activity'),
     
     path('api-pictures-activity/<id_activity>', PictureRecordView.as_view(), name='picture'),
-    path('api-pictures-activity', PictureRecordView.as_view(), name='picture'),
+    path('api-picture/', PictureRecordView.as_view(), name='picture'),
     
     path('api-tasks-activity/<id_activity>', TaskRecordView.as_view(), name='task'),
-    path('api-tasks-activity/', TaskRecordView.as_view(), name='task'),
+    path('api-task/', TaskRecordView.as_view(), name='task'),
 ] 
