@@ -41,7 +41,7 @@ class Area(models.Model):
 
     id_area         = models.AutoField(primary_key=True, unique=True)
     name_area       = models.CharField('Nombre de Area', max_length=300)
-    path_img_header = models.ImageField()
+    path_img_header = models.ImageField(storage=PrivateMediaStorage())
 
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
@@ -87,7 +87,7 @@ class Picture(models.Model):
 
     id_img          = models.AutoField(primary_key=True, unique=True)
     tipo_img        = models.CharField('tipo', max_length=100)
-    img_file        = models.FileField(storage=PrivateMediaStorage())
+    img_file        = models.ImageField(storage=PrivateMediaStorage())
     
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
     created_by      = models.CharField('Creado Por', max_length=10, null=True)
@@ -102,7 +102,7 @@ class Picture(models.Model):
         verbose_name_plural = 'imagenes'
 
     def __str__(self):
-        return self.img_file
+        return self.tipo_img
 
 
 
