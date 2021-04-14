@@ -18,7 +18,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import django_heroku
 import os
 import dj_database_url
-#from decouple import config
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -103,16 +103,16 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-""" DATABASES = {
+DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 
     
-}  """
+}
 
 
-import configparser
+""" import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
 
@@ -125,7 +125,7 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
-}
+} """
 
 
 # Password validation
@@ -171,12 +171,20 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
-
-AWS_ACCESS_KEY_ID = config['TEST_AWS']['AWS_ACCESS_KEY_ID']
+#-------TEST---------------#
+""" AWS_ACCESS_KEY_ID = config['TEST_AWS']['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = config['TEST_AWS']['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = config['TEST_AWS']['AWS_STORAGE_BUCKET_NAME']
+
+"""
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+
+
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
