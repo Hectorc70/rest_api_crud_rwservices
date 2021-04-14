@@ -32,7 +32,7 @@ class CustomUserManager(BaseUserManager):
 
     def create_user(self, id_user, password, **extra_fields):
         if not id_user:
-            raise ValueError(_('Escriba un numero de usuario(Numero de telefono)'))
+            raise ValueError(('Escriba un numero de usuario(Numero de telefono)'))
         
         id_user = self.normalize_email(id_user)
         user = self.model(id_user=id_user)

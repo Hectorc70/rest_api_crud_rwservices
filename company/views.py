@@ -11,11 +11,11 @@ from django.http import Http404
 
 from .models import Company, Area
 
-from .models import (Activity, PictureActivity,
+from .models import (Activity, Picture,
                     Task)
 
 from .serializers import CompanySerializer, AreaSerializer
-from .serializers import (ActivitySerializer, PictureActSerializer,
+from .serializers import (ActivitySerializer, PictureSerializer,
                             TaskSerializer)
 
 class CompanyRecordView(APIView):
@@ -90,15 +90,15 @@ class ActivityRecordView(APIView):
 class PictureRecordView(APIView):
     def get(self, request, id_activity):        
 
-        pictures = PictureActivity.objects.filter(activity=id_activity)   
-        serializer_pictures = PictureActSerializer(pictures, many=True)
+        pictures = Picture.objects.filter(activity=id_activity)   
+        serializer_pictures = PictureSerializer(pictures, many=True)
 
 
 
         return Response(serializer_pictures.data)
 
     def post(self, request, format=None):
-        serializer = PictureActSerializer(data=request.data)
+        serializer = PictureSerializer(data=request.data)
 
         if serializer.is_valid():
 

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'storages',
     'users',
     'company',
     'empleado'
@@ -102,16 +103,19 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 
     
-} 
+}  """
 
 
-""" 
+import configparser
+config = configparser.ConfigParser()
+config.read("config.ini")
+
 DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
@@ -121,7 +125,7 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
-} """
+}
 
 
 # Password validation
@@ -166,6 +170,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+
+AWS_ACCESS_KEY_ID = config['TEST_AWS']['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = config['TEST_AWS']['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = config['TEST_AWS']['AWS_STORAGE_BUCKET_NAME']
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'media'
+#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+AWS_PUBLIC_MEDIA_LOCATION = 'pictures/public'
+DEFAULT_FILE_STORAGE = 'rest_api_crud_rwservices.storage_backends.PublicMediaStorage'
+
+AWS_PRIVATE_MEDIA_LOCATION = 'pictures/private'
+PRIVATE_FILE_STORAGE = 'rest_api_crud_rwservices.storage_backends.PrivateMediaStorage'
+
 
 
 

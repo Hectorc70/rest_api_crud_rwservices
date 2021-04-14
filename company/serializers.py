@@ -3,7 +3,7 @@ from rest_framework.validators import UniqueTogetherValidator
 
 from rest_framework import serializers
 from company.models import (Company, Activity, Area, 
-                            PictureActivity,
+                            Picture,
                             Task)
 
 
@@ -49,14 +49,14 @@ class ActivitySerializer(serializers.ModelSerializer):
         model = Activity
         fields = '__all__'
 
-class PictureActSerializer(serializers.ModelSerializer):
+class PictureSerializer(serializers.ModelSerializer):
 
     def create(self, validate_data):
-        activity_pictures = PictureActivity.objects.create(**validate_data)
+        activity_pictures = Picture.objects.create(**validate_data)
 
         return activity_pictures
     class Meta:
-        model = PictureActivity
+        model = Picture
         fields = '__all__'
 
 class TaskSerializer(serializers.ModelSerializer):

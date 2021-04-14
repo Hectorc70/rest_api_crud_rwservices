@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
+
+from rest_api_crud_rwservices.storage_backends import PrivateMediaStorage, PublicMediaStorage
 # Create your models here.
 
 
@@ -30,7 +33,7 @@ class Company(models.Model):
         verbose_name = 'Empresa'
 
     def __str__(self):
-        return self.name_company
+        return "RFC: {} \t Nombre: {}".format(self.rfc, self.name_company)
 
 
 
@@ -38,7 +41,7 @@ class Area(models.Model):
 
     id_area         = models.AutoField(primary_key=True, unique=True)
     name_area       = models.CharField('Nombre de Area', max_length=300)
-    path_img_header = models.CharField('Ruta de Imagen de Header', max_length=300, null=True)
+    path_img_header = models.ImageField()
 
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
@@ -80,20 +83,18 @@ class Activity(models.Model):
         return self.name_activity
 
     
-class PictureActivity(models.Model):
-
+class Picture(models.Model):
 
     id_img          = models.AutoField(primary_key=True, unique=True)
-    name_img        = models.CharField('Nombre de Imagen', max_length=100, blank=True)
-    tipo_img     = models.CharField('tipo', max_length=100)
-    path_img        = models.CharField('Ruta de Imagen', max_length=500, null=True)
+    tipo_img        = models.CharField('tipo', max_length=100)
+    img_file        = models.FileField(storage=PrivateMediaStorage())
     
     creation_date   = models.DateField('Fecha de creacion', null=False, auto_now_add=timezone.now())
     created_by      = models.CharField('Creado Por', max_length=10, null=True)
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
 
-    activity         = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='activity_imagen')
+    activity         = models.ForeignKey(Activity, null=False, on_delete=models.CASCADE, related_name='activity_pictures')
     
 
     class Meta:
@@ -101,7 +102,7 @@ class PictureActivity(models.Model):
         verbose_name_plural = 'imagenes'
 
     def __str__(self):
-        return self.name_img
+        return self.img_file
 
 
 
