@@ -68,6 +68,12 @@ class ActivitysAreaRecordView(APIView):
 
         return Response(serializer.data)
 
+class ActivitysUserRecordView(APIView):
+    def get(self, request, user):
+        activities_area = Activity.objects.filter(created_by = user)
+        serializer = ActivitySerializer(activities_area, many=True)
+        return Response(serializer.data)
+
 class ActivityRecordView(APIView):
     def get(self, request, id_activity):
 
