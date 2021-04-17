@@ -4,7 +4,7 @@ from .views import (CompanyRecordView,
                     AreaRecordView, 
                     ActivitysAreaRecordView,
                     ActivityRecordView,
-                    ActivitysUserRecordView
+                    ActivitysUserRecordView,
                     PictureRecordView,
                     TaskRecordView)
 
