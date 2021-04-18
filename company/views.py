@@ -41,7 +41,7 @@ class CompanyRecordView(APIView):
 class AreaRecordView(APIView):
     def get(self, request,company):
 
-        areas_company = Area.objects.filter(company=company)
+        areas_company = Area.objects.filter(company=company).order_by('creation_date')
         serializer = AreaSerializer(areas_company, many=True)
 
         return Response(serializer.data)
@@ -69,9 +69,10 @@ class ActivitysAreaRecordView(APIView):
         return Response(serializer.data)
 
 class ActivitysUserRecordView(APIView):
-    def get(self, request, user):
-        activities_area = Activity.objects.filter(created_by = user)
-        serializer = ActivitySerializer(activities_area, many=True)
+
+    def get(self, request, id_user):
+        activities_user = Activity.objects.filter(created_by = id_user).order_by('-modified')
+        serializer = ActivitySerializer(activities_user, many=True)
         return Response(serializer.data)
 
 class ActivityRecordView(APIView):

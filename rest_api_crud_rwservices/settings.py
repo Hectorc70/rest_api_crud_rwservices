@@ -20,6 +20,10 @@ import os
 import dj_database_url
 from decouple import config
 
+""" import configparser
+config = configparser.ConfigParser()
+config.read("config.ini") """
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,9 +32,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 SECRET_KEY = config('SECRET_KEY')
-# SECURITY WARNING: don't run with debug turned on in production!
+#SECRET_KEY = config['TEST']['SECRET_KEY']
+#SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
@@ -112,11 +117,9 @@ DATABASES = {
 }
 
 
-""" import configparser
-config = configparser.ConfigParser()
-config.read("config.ini")
 
-DATABASES = {
+
+""" DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
             'NAME':config['TEST']['DB_NAME'],
@@ -174,9 +177,9 @@ STATICFILES_DIRS = (
 #-------TEST---------------#
 """ AWS_ACCESS_KEY_ID = config['TEST_AWS']['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = config['TEST_AWS']['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = config['TEST_AWS']['AWS_STORAGE_BUCKET_NAME']
+AWS_STORAGE_BUCKET_NAME = config['TEST_AWS']['AWS_STORAGE_BUCKET_NAME'] """
 
-"""
+
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
