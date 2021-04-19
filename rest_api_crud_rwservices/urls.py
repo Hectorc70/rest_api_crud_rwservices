@@ -27,7 +27,6 @@ urlpatterns = [
     path('', admin.site.urls),
     path('api/', include('users.urls', namespace='api')),
     path('api/', include('company.urls', namespace='companys')),
-    path('admin-web/', include('admin_web.urls', namespace='web_admin')),
     
     path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

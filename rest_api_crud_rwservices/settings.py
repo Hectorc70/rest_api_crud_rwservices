@@ -20,9 +20,10 @@ import os
 import dj_database_url
 from decouple import config
 
-import configparser
+""" import configparser
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read("config.ini") """
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,8 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-#SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = config['TEST']['SECRET_KEY']
+SECRET_KEY = config('SECRET_KEY')
+#SECRET_KEY = config['TEST']['SECRET_KEY']
 #SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
@@ -39,8 +40,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['rwapi.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = []
 
-LOGIN_URL = 'admin-web/login/'
-LOGOUT_REDIRECT_URL = 'admin-web/login/'
 
 # Application definition
 
@@ -57,8 +56,7 @@ INSTALLED_APPS = [
     'storages',
     'users',
     'company',
-    'empleado',
-    'admin_web'
+    'empleado'
 
 ]
 
@@ -110,18 +108,18 @@ WSGI_APPLICATION = 'rest_api_crud_rwservices.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-""" DATABASES = {
+DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 
     
 }
- """
 
 
 
-DATABASES = {
+
+""" DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
             'NAME':config['TEST']['DB_NAME'],
@@ -130,7 +128,7 @@ DATABASES = {
             'HOST': config['TEST']['DB_HOST'],
             'PORT': config['TEST']['DB_PORT'],
         }
-}
+} """
 
 
 # Password validation
@@ -177,16 +175,16 @@ STATICFILES_DIRS = (
 )
 
 #-------TEST---------------#
-AWS_ACCESS_KEY_ID = config['TEST_AWS']['AWS_ACCESS_KEY_ID']
+""" AWS_ACCESS_KEY_ID = config['TEST_AWS']['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = config['TEST_AWS']['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = config['TEST_AWS']['AWS_STORAGE_BUCKET_NAME']
+AWS_STORAGE_BUCKET_NAME = config['TEST_AWS']['AWS_STORAGE_BUCKET_NAME'] """
 
 
-#-------PRODUCCION---------------#
-""" AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-"""
+
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
