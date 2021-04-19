@@ -5,3 +5,5 @@ rest_api_crud_rwservices/__pycache__/
 
 .vscode/
 config.ini
+
+admin_web/__init__.py
