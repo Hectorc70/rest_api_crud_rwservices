@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    
+    <title>Login</title>
+</head>
+<body>
+    <form class="form" method="post" action=''>
+        {% csrf_token %}
+        <div class="form-titulo">
+            <a href="#">LOGIN </a>
+        </div>
+
+        <hr />
+        <div id="box-login">
+            <div class="form-campos">
+                <label for="control">control</label>
+                <input type="text" class="input-campo" name="control" />
+            </div>
+
+            <div class="form-campos">
+                <label for="psword">contraseña</label>
+                <input type="password" class="input-campo" name="psword" />
+            </div>
+            <div class="btn-enviar">
+
+                <button type="submit">Enviar</button>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>
