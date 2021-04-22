@@ -4,8 +4,8 @@
 import os
 
 
-#from rest_api_crud_rwservices.config.settings_dev import * 
-from rest_api_crud_rwservices.config.settings_prod import *
+from rest_api_crud_rwservices.config.settings_dev import * 
+#from rest_api_crud_rwservices.config.settings_prod import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
