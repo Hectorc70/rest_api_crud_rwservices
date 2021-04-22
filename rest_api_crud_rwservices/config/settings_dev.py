@@ -3,9 +3,10 @@ import os
 import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
+tipo = config['DEV']
 
 ALLOWED_HOSTS = ['127.0.0.1']
-SECRET_KEY = config['DEV']['SECRET_KEY']
+SECRET_KEY = tipo['SECRET_KEY']
 
 DEBUG = True
 
@@ -14,11 +15,11 @@ DEBUG = True
 DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
-            'NAME':config['PROD']['DB_NAME'],
-            'USER':config['PROD']['DB_USER'],
-            'PASSWORD': config['PROD']['DB_PASSWORD'],
-            'HOST': config['PROD']['DB_HOST'],
-            'PORT': config['PROD']['DB_PORT'],
+            'NAME':tipo['DB_NAME'],
+            'USER':tipo['DB_USER'],
+            'PASSWORD': tipo['DB_PASSWORD'],
+            'HOST': tipo['DB_HOST'],
+            'PORT': tipo['DB_PORT'],
         }
 }
 
