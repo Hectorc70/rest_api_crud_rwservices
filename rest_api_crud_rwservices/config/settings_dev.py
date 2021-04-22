@@ -8,7 +8,7 @@ tipo = config['DEV']
 ALLOWED_HOSTS = ['127.0.0.1']
 SECRET_KEY = tipo['SECRET_KEY']
 
-DEBUG = True
+DEBUG = False
 
 
 
