@@ -27,7 +27,7 @@ class Company(models.Model):
     modified        = models.DateField('Fecha de ultima Modificacion', null=False, auto_now=timezone.now())
     created_by      = models.CharField('Creado Por', max_length=10, null=True)
     modified_by     = models.CharField('Modificado Por', max_length=10, null=True)
-    path_logo       = models.CharField('Ruta Logo Imagen', max_length=500, null=True)   
+    path_logo       = models.CharField('Ruta Logo Imagen', max_length=500, null=True, blank=True)   
 
     class Meta:
         verbose_name = 'Empresa'
